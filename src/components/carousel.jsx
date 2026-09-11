@@ -20,19 +20,19 @@ function Carousel() {
   const currentSlide = carouselData[currentIndex];
   
   return (
-    <div className="w-full h-screen relative group">
+    <div id='Home' className="w-full h-screen relative group">
       
       {/* Background Image Container */}
       <div
         style={{ backgroundImage: `url(${currentSlide.image})` }}
         className="w-full h-full bg-center bg-cover duration-500 relative overflow-hidden"
       >
-        {/* Dark Overlay for Text Legibility */}
         <div className="absolute inset-0 bg-linear-to-b from-black/30 via-black/50 to-black/70" />
 
         {/* Centered Text Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 z-10 select-none">
-          {/* Title renders JSX/HTML tags cleanly directly */}
+          
+          
           <h2 className="text-3xl md:text-4xl font-bold tracking-wide drop-shadow-md mb-2">
             {currentSlide.title1}
           </h2>
@@ -41,7 +41,7 @@ function Carousel() {
             {currentSlide.title2}
           </p>
           
-          {/* Conditional Rendering for Optional Button */}
+          {/* Optional Button */}
           {currentSlide.button && (
             <a 
               href={currentSlide.button.link}
@@ -53,7 +53,6 @@ function Carousel() {
         </div>
       </div>
 
-      {/* Left Arrow Button */}
       <button
         onClick={preSlide}
         className="group-hover:block absolute top-[50%] translate-y-[-50%] left-8 text-2xl rounded-full p-2 bg-black/30 text-white cursor-pointer hover:bg-black/60 transition z-20"
@@ -61,7 +60,6 @@ function Carousel() {
         ❮
       </button>
 
-      {/* Right Arrow Button */}
       <button
         onClick={nextSlide}
         className="group-hover:block absolute top-[50%] translate-y-[-50%] right-8 text-2xl rounded-full p-2 bg-black/30 text-white cursor-pointer hover:bg-black/60 transition z-20"
