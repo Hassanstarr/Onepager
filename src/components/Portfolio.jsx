@@ -1,12 +1,14 @@
 import {useState} from "react";
 import SearchPortfolio from "./SearchPortfolio.jsx";
 import PortfolioCard from "./PortfolioCard.jsx";
-import portfolioData from "../data/portfolio.js";
+import {portfolioData} from "../data/portfolio.js";
+import AboutPortfolio from "./aboutPortfolio.jsx";
 
 function Portfolio() {
 
     const [category, setCategory] = useState("All");
-    const [zoomImage, setZoomImage] = useState("")
+    const [zoomImage, setZoomImage] = useState("");
+    const [aboutPortfolio, setAboutPortfolio] = useState("")
 
     const filteredPortfolioData = category === "All"
         ? portfolioData
@@ -15,6 +17,11 @@ function Portfolio() {
     const handleZoomImage = (image) => {
         setZoomImage(image)
         console.log("image: "+image)
+    }
+
+    const handleAboutPortfolio = (id) => {
+        setAboutPortfolio(id)
+        console.log("ID: "+id)
     }
     
     
@@ -32,10 +39,12 @@ function Portfolio() {
                     {filteredPortfolioData.map((project) => (
                         <div key={project.id} className="mb-4 break-inside-avoid">
                             <PortfolioCard
+                                id={project.id}
                                 image={project.image}
                                 title={project.title}
                                 text={project.text}
                                 onZoom={handleZoomImage}
+                                aboutPortfolio={handleAboutPortfolio}
                             />
                         </div>
                     ))}
@@ -54,6 +63,15 @@ function Portfolio() {
                         className="max-h-[90vh] max-w-[90vw] object-contain"
                         onClick={(event) => event.stopPropagation()}
                     />
+                </div>
+            )}
+            {aboutPortfolio && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-6"
+                    onClick={() => setAboutPortfolio("")}
+                    role="presentation"
+                >
+                    <AboutPortfolio id={aboutPortfolio} clickLink={() => setAboutPortfolio("")} />
                 </div>
             )}
             

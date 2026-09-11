@@ -1,7 +1,7 @@
 import { IoIosSearch } from "react-icons/io";
 import { LuNewspaper } from "react-icons/lu";
 
-function PortfolioCard({ image, title, text, onZoom }) {
+function PortfolioCard({ id, image, title, text, onZoom, aboutPortfolio }) {
     return (
         <div className="group relative self-start overflow-hidden shadow-md">
             <img src={image} alt={title} className="block h-auto w-full" />
@@ -21,7 +21,7 @@ function PortfolioCard({ image, title, text, onZoom }) {
                     <button
                         type="button"
                         className="rounded-full bg-white p-2 text-sky-600 transition-colors hover:bg-sky-100 cursor-pointer"
-                        onClick={() => console.log("More about the portifolio")}
+                        onClick={() => aboutPortfolio(id)}
                     >
                         <LuNewspaper />
                     </button>

@@ -10,6 +10,9 @@ import portfolio9 from "../assets/portfolio9.jpg";
 import portfolio10 from "../assets/portfolio10.jpg";
 import portfolio11 from "../assets/portfolio11.jpg";
 
+import aboutPortfolio1 from "../assets/aboutPortfolio1.jpg";
+import aboutPortfolio2 from "../assets/aboutPortfolio2.jpg";
+
 const portfolioData = [
     {
         id: 1,
@@ -90,4 +93,84 @@ const portfolioData = [
     },
 ];
 
-export default portfolioData;
+const aboutPortfolioData = [
+    {
+        id: 1,
+        image: [aboutPortfolio1, aboutPortfolio2],
+        title: "Useful Seo Icons",
+        text: "Useful Seo Icons",
+        link: "#"
+    },
+    {
+        id: 2,
+        image: [aboutPortfolio1, aboutPortfolio2],
+        title: "Useful Seo Icons",
+        text: "Useful Seo Icons",
+        link: "#"
+    },
+    {
+        id: 3,
+        image: [aboutPortfolio1, aboutPortfolio2],
+        title: "Useful Seo Icons",
+        text: "Useful Seo Icons",
+        link: "#"
+    },
+    {
+        id: 4,
+        image: [aboutPortfolio1, aboutPortfolio2],
+        title: "Useful Seo Icons",
+        text: "Useful Seo Icons",
+        link: "#"
+    },
+    {
+        id: 5,
+        image: [aboutPortfolio1, aboutPortfolio2],
+        title: "Useful Seo Icons",
+        text: "Useful Seo Icons",
+        link: "#"
+    },
+    {
+        id: 6,
+        image: [aboutPortfolio1, aboutPortfolio2],
+        title: "Useful Seo Icons",
+        text: "Useful Seo Icons",
+        link: "#"
+    },
+    {
+        id: 7,
+        image: [aboutPortfolio1, aboutPortfolio2],
+        title: "Useful Seo Icons",
+        text: "Useful Seo Icons",
+        link: "#"
+    },
+    {
+        id: 8,
+        image: [aboutPortfolio1, aboutPortfolio2],
+        title: "Useful Seo Icons",
+        text: "Useful Seo Icons",
+        link: "#"
+    },
+    {
+        id: 9,
+        image: [aboutPortfolio1, aboutPortfolio2],
+        title: "Useful Seo Icons",
+        text: "Useful Seo Icons",
+        link: "#"
+    },
+    {
+        id: 10,
+        image: [aboutPortfolio1, aboutPortfolio2],
+        title: "Useful Seo Icons",
+        text: "Useful Seo Icons",
+        link: "#"
+    },
+    {
+        id: 11,
+        image: [aboutPortfolio1, aboutPortfolio2],
+        title: "Useful Seo Icons",
+        text: "Useful Seo Icons",
+        link: "#"
+    }
+]
+
+export { portfolioData, aboutPortfolioData };
