@@ -1,9 +1,73 @@
+import { useState } from "react";
+import TeamCard from "./teamCard.jsx";
+import teamData from "../data/team.js";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+
 function Team() {
-    return(
-        <>
+  const [swiper, setSwiper] = useState(null);
+
+  return (
+    <div
+      id="Team"
+      className="relative flex w-full flex-col items-center justify-center bg-[#333333] py-15"
+    >
+        <h1 className="font-['Courier_New'] text-[45px] font-bold uppercase text-white">
             Meet the Team
-        </>
-    );
+        </h1>
+        <p className="mb-5 font-['Courier_New'] text-[18px] text-white">
+            This is Photoshop's version of Lorem Ipsum. Proin gravida
+        </p>
+
+        <div className="w-full px-35">
+            <Swiper
+            slidesPerView={4}
+            slidesPerGroup={4}
+            spaceBetween={12}
+            speed={700}
+            onSwiper={setSwiper}
+            >
+            {teamData.map((team) => (
+                <SwiperSlide key={team.name}>
+                <TeamCard
+                    image={team.image}
+                    name={team.name}
+                    role={team.role}
+                />
+                </SwiperSlide>
+            ))}
+            </Swiper>
+        </div>
+
+        <button
+            onClick={() => {
+                if(swiper.isBeginning) {
+                    swiper.slideTo(swiper.slides.length - 4);
+                } else {
+                    swiper.slidePrev();
+                }
+            }}
+            className="absolute left-0 top-1/2 z-50 flex h-10 w-10 -translate-y-1/2 items-center justify-center py-10 bg-black text-white cursor-pointer hover:scale-110"
+        >
+            <FaChevronLeft />
+        </button>
+
+        <button
+            onClick={() => {
+                if(swiper.isEnd) {
+                    swiper.slideTo(0)
+                } else {
+                    swiper.slideNext();
+                }
+            }}
+            className="absolute right-0 top-1/2 z-50 flex h-10 w-10 -translate-y-1/2 items-center justify-center py-10 bg-black text-white cursor-pointer hover:scale-110"
+        >
+            <FaChevronRight />
+        </button>
+    </div>
+  );
 }
 
 export default Team;
