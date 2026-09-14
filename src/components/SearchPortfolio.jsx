@@ -9,7 +9,7 @@ function SearchPortfolio({ onCategoryChange }) {
                     type="button"
                     value={category}
                     onClick={(e) => onCategoryChange(e.currentTarget.value)}
-                    className="rounded cursor-pointer px-4 py-2 text-sm font-medium transition-colors hover:bg-sky-500 hover:text-white"
+                    className="rounded cursor-pointer px-4 py-2 text-sm font-medium transition-colors hover:bg-[#2bb6b6] hover:text-white"
                 >
                     {category}
                 </button>

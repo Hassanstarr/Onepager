@@ -27,8 +27,8 @@ function Portfolio() {
     
     return (
         <div id='Portfolio' className="w-full p-10 pt-40 bg-gray-200 flex items-center justify-center flex-col">
-            <h1 className="text-4xl uppercase font-bold">Our Portfolio</h1>
-            <p className=" text-gray-600">This is Photoshop's version of Lorem Ipsum. Proin gravida</p>
+            <h1 className="text-4xl uppercase font-bold font-['Courier_New']">Our Portfolio</h1>
+            <p className=" text-gray-600 font-['Courier_New']">This is Photoshop's version of Lorem Ipsum. Proin gravida</p>
 
             <section className="w-full max-w-5xl mt-10">
                 <div className="m-10 border-t-2 border-b-2 border-gray-300">

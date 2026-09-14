@@ -45,7 +45,7 @@ function Carousel() {
           {currentSlide.button && (
             <a 
               href={currentSlide.button.link}
-              className="mt-4 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow-md transition-all transform hover:scale-105 inline-block"
+              className="mt-5 px-6 py-4 bg-[#2bb6b6] font-['Courier_New'] font-bold text-white rounded-lg shadow-md transition-all transform hover:scale-105 inline-block"
             >
               {currentSlide.button.text}
             </a>
