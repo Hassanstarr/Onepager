@@ -15,7 +15,7 @@ function Navbar() {
                             <li><a href="#Services" className="relative px-4 py-3 font-['Courier_New'] text-[18px] uppercase text-[#010000] transition-all duration-170 ease-in-out hover:bg-[#2bb6b6] hover:text-white">Services</a></li>
                             <li><a href="#" className="relative px-4 py-3 font-['Courier_New'] text-[18px] uppercase text-[#010000] transition-all duration-170 ease-in-out hover:bg-[#2bb6b6] hover:text-white">Team</a></li>
                             <li><a href="#About" className="relative px-4 py-3 font-['Courier_New'] text-[18px] uppercase text-[#010000] transition-all duration-170 ease-in-out hover:bg-[#2bb6b6] hover:text-white">About</a></li> 
-                            <li><a href="#" className="relative px-4 py-3 font-['Courier_New'] text-[18px] uppercase text-[#010000] transition-all duration-170 ease-in-out hover:bg-[#2bb6b6] hover:text-white">Blog</a></li> 
+                            <li><a href="#Blog" className="relative px-4 py-3 font-['Courier_New'] text-[18px] uppercase text-[#010000] transition-all duration-170 ease-in-out hover:bg-[#2bb6b6] hover:text-white">Blog</a></li> 
                             <li><a href="#" className="relative px-4 py-3 font-['Courier_New'] text-[18px] uppercase text-[#010000] transition-all duration-170 ease-in-out hover:bg-[#2bb6b6] hover:text-white">Contact Us</a></li>
                         </ul>
                     </div>

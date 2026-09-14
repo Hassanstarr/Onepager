@@ -22,13 +22,13 @@ function AboutPortfolio ({id, clickLink}) {
   
   return (
     <div
-      className="relative w-full max-w-3xl overflow-hidden rounded-lg shadow-2xl"
+      className="relative w-135 max-w-3xl overflow-hidden rounded-lg shadow-2xl"
       onClick={(event) => event.stopPropagation()}
       role="dialog"
       aria-modal="true"
       aria-label={`${currentSlide.title} project details`}
     >
-      <div className="relative bg-white">
+      <div className="relative w-135 p-5 bg-white">
         <img
           src={currentImage}
           alt={currentSlide.title}
@@ -54,7 +54,7 @@ function AboutPortfolio ({id, clickLink}) {
         </button>
       </div>
 
-      <div className="px-6 py-5 text-center text-gray-900 bg-white">
+      <div className="px-6 py-5 w-135 text-gray-900 bg-white">
         <h2 className="text-2xl font-bold">{currentSlide.title}</h2>
         <p className="mt-2 text-gray-600">{currentSlide.text}</p>
       </div>

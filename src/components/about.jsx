@@ -50,11 +50,11 @@ function About() {
 
             <div className="w-full m-10">
                 <div className="my-10 text-center">
-                    <h1 className="mx-2.5 m-0 font-['Courier_New'] text-[45px] font-bold uppercase">
+                    <h1 className="mx-2.5 font-['Courier_New'] text-[45px] font-bold uppercase">
                     Company stats
                     </h1>
 
-                    <p className="m-0 font-['Courier_New'] text-[18px] leading-6 text-[#838383]">
+                    <p className="font-['Courier_New'] text-[18px] leading-6 text-[#838383]">
                     SThis is Photoshop's version of Lorem Ipsum. Proin gravida
                     </p>
                 </div>

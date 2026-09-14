@@ -12,6 +12,7 @@ import portfolio11 from "../assets/Portfolio11.jpg";
 
 import aboutPortfolio1 from "../assets/aboutPortfolio1.jpg";
 import aboutPortfolio2 from "../assets/aboutPortfolio2.jpg";
+import aboutPortfolio3 from "../assets/aboutPortfolio3.jpg";
 
 const portfolioData = [
     {
@@ -96,79 +97,79 @@ const portfolioData = [
 const aboutPortfolioData = [
     {
         id: 1,
-        image: [aboutPortfolio1, aboutPortfolio2],
+        image: [aboutPortfolio1, aboutPortfolio2, aboutPortfolio3],
         title: "Useful Seo Icons",
-        text: "Useful Seo Icons",
+        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         link: "#"
     },
     {
         id: 2,
-        image: [aboutPortfolio1, aboutPortfolio2],
+        image: [aboutPortfolio1, aboutPortfolio2, aboutPortfolio3],
         title: "Useful Seo Icons",
-        text: "Useful Seo Icons",
+        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         link: "#"
     },
     {
         id: 3,
-        image: [aboutPortfolio1, aboutPortfolio2],
+        image: [aboutPortfolio1, aboutPortfolio2, aboutPortfolio3],
         title: "Useful Seo Icons",
-        text: "Useful Seo Icons",
+        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         link: "#"
     },
     {
         id: 4,
-        image: [aboutPortfolio1, aboutPortfolio2],
+        image: [aboutPortfolio1, aboutPortfolio2, aboutPortfolio3],
         title: "Useful Seo Icons",
-        text: "Useful Seo Icons",
+        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         link: "#"
     },
     {
         id: 5,
-        image: [aboutPortfolio1, aboutPortfolio2],
+        image: [aboutPortfolio1, aboutPortfolio2, aboutPortfolio3],
         title: "Useful Seo Icons",
-        text: "Useful Seo Icons",
+        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         link: "#"
     },
     {
         id: 6,
-        image: [aboutPortfolio1, aboutPortfolio2],
+        image: [aboutPortfolio1, aboutPortfolio2, aboutPortfolio3],
         title: "Useful Seo Icons",
-        text: "Useful Seo Icons",
+        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         link: "#"
     },
     {
         id: 7,
-        image: [aboutPortfolio1, aboutPortfolio2],
+        image: [aboutPortfolio1, aboutPortfolio2, aboutPortfolio3],
         title: "Useful Seo Icons",
-        text: "Useful Seo Icons",
+        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         link: "#"
     },
     {
         id: 8,
-        image: [aboutPortfolio1, aboutPortfolio2],
+        image: [aboutPortfolio1, aboutPortfolio2, aboutPortfolio3],
         title: "Useful Seo Icons",
-        text: "Useful Seo Icons",
+        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         link: "#"
     },
     {
         id: 9,
-        image: [aboutPortfolio1, aboutPortfolio2],
+        image: [aboutPortfolio1, aboutPortfolio2, aboutPortfolio3],
         title: "Useful Seo Icons",
-        text: "Useful Seo Icons",
+        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         link: "#"
     },
     {
         id: 10,
-        image: [aboutPortfolio1, aboutPortfolio2],
+        image: [aboutPortfolio1, aboutPortfolio2, aboutPortfolio3],
         title: "Useful Seo Icons",
-        text: "Useful Seo Icons",
+        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         link: "#"
     },
     {
         id: 11,
-        image: [aboutPortfolio1, aboutPortfolio2],
+        image: [aboutPortfolio1, aboutPortfolio2, aboutPortfolio3],
         title: "Useful Seo Icons",
-        text: "Useful Seo Icons",
+        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         link: "#"
     }
 ]

@@ -4,7 +4,7 @@ import Carousel from "./components/carousel.jsx"
 import Navbar from "./components/Navbar.jsx"
 import Portfolio from "./components/Portfolio.jsx"
 import Services from "./components/services.jsx"
-import Team from './components/teamp.jsx'
+import Team from './components/team.jsx'
 import About from "./components/about.jsx"
 import Blog from './components/blog.jsx'
 import Contact from './components/contact.jsx'
