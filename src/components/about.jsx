@@ -1,10 +1,14 @@
+import {useState} from 'react'
 import aboutData from "../data/about.jsx";
+import clients from "../data/clients.js";
 
 function About() {
+    const [currentPage, setCurrentPage] = useState(0);
+    
     return(
         <div id="About" className="mx-47">
 
-            <div className="grid grid-cols-2 gap-10 pt-25">
+            <div className="grid grid-cols-2 gap-10 pt-35">
                 
                 <div className="grid grid-rows-[auto-1fr]">
                     <div className="mb-10">
@@ -41,14 +45,47 @@ function About() {
                         </div>
                     </div>
 
-                    <div className="">
-                        contetn
+                    
+
+                    <div className="relative mt-10">
+
+                        <div className="absolute right-0 top-0 flex gap-2">
+                            {clients.map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => setCurrentPage(index)}
+                                    className={`h-2.5 w-2.5 cursor-pointer rounded-full transition ${
+                                        currentPage === index
+                                            ? "bg-[#2bb6b6]"
+                                            : "bg-[#d5d5d5]"
+                                    }`}
+                                />
+                            ))}
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-5 pt-10">
+                            {clients[currentPage].map((client, index) => (
+                                <div
+                                    key={index}
+                                    className="flex h-30 items-center justify-center border border-[#e4e4e4] bg-[#2bb6b6]"
+                                >
+                                    <img
+                                        src={client}
+                                        alt={`Client ${index + 1}`}
+                                        className="max-h-12 max-w-32 object-contain"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+
                     </div>
+
+
                 </div>
 
             </div>
 
-            <div className="w-full m-10">
+            <div className="w-full mx-10 mt-10">
                 <div className="my-10 text-center">
                     <h1 className="mx-2.5 font-['Courier_New'] text-[45px] font-bold uppercase">
                     Company stats

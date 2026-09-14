@@ -4,7 +4,7 @@ import blogData from "../data/blog.js";
 
 function Blog() {
     return(
-        <div id='Blog' className="w-full p-10 flex items-center justify-center flex-col">
+        <div id='Blog' className="w-full p-30 flex items-center justify-center flex-col">
             <h1 className="text-4xl uppercase font-bold font-['Courier_New']">Latest Posts</h1>
             <p className="mb-10 text-gray-600 font-['Courier_New']">This is Photoshop's version of Lorem Ipsum. Proin gravida</p>
 

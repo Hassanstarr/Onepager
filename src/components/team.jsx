@@ -10,10 +10,7 @@ function Team() {
   const [swiper, setSwiper] = useState(null);
 
   return (
-    <div
-      id="Team"
-      className="relative flex w-full flex-col items-center justify-center bg-[#333333] py-15"
-    >
+    <div id="Team" className="relative flex w-full flex-col items-center justify-center bg-[#333333] py-30">
         <h1 className="font-['Courier_New'] text-[45px] font-bold uppercase text-white">
             Meet the Team
         </h1>
