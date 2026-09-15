@@ -27,7 +27,7 @@ function Portfolio() {
     
     return (
         <div id='Portfolio' className="w-full pt-5 sm:p-10 sm:pt-40 bg-gray-200 flex items-center justify-center flex-col">
-            <h1 className="text-[45px] text-center uppercase font-bold font-['Courier_New']">Our Portfolio</h1>
+            <h1 className="text-[45px] text-center uppercase font-bold font-['Courier_New'] px-5">Our Portfolio</h1>
             <p className="text-[18px] text-center text-gray-600 font-['Courier_New']">This is Photoshop's version of Lorem Ipsum. Proin gravida</p>
 
             <section className="w-full mt-10">
@@ -35,9 +35,9 @@ function Portfolio() {
                     <SearchPortfolio onCategoryChange={setCategory} />
                 </div>
             
-                <div className="m-4 columns-1 gap-4 sm:columns-1 md:columns-2 lg:columns-4">
+                <div className="columns-1 gap-4 sm:columns-1 md:columns-2 lg:columns-4">
                     {filteredPortfolioData.map((project) => (
-                        <div key={project.id} className="mb-4 break-inside-avoid">
+                        <div key={project.id} className="mb-15 md:mb-5 break-inside-avoid">
                             <PortfolioCard
                                 id={project.id}
                                 image={project.image}
