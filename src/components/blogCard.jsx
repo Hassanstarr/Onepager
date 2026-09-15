@@ -3,8 +3,8 @@ import { FaComments } from "react-icons/fa";
 
 function BlogCard({ image, date, commentNo, title, description }) {
     return(
-        <div className="w-[262.5px] text-center">
-            <div className="relative h-[194.437px] w-[262.5px]">
+        <div className="w-full text-center">
+            <div className="relative">
                 <img
                 src={image}
                 alt="Blog post"
