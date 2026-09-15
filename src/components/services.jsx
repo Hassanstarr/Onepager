@@ -4,10 +4,10 @@ import serviceImg from "../assets/services.png"
 function Services () {
     return (
         <div id='Services' className="w-full pt-40 flex items-center justify-center flex-col">
-            <h1 className="text-4xl uppercase font-bold font-['Courier_New']">Our Services</h1>
-            <p className=" text-gray-600 font-['Courier_New']">This is Photoshop's version of Lorem Ipsum. Proin gravida</p>
+            <h1 className="text-[45px] text-center uppercase font-bold font-['Courier_New']">Our Services</h1>
+            <p className="text-[18px] text-center text-gray-600 font-['Courier_New']">This is Photoshop's version of Lorem Ipsum. Proin gravida</p>
 
-            <div className="grid grid-cols-3 gap-y-10 py-20 px-50">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-10 py-20 px-5 md:px-10 lg:px-50">
                 {servicesData.map((service) => (
                     <div className="grid grid-cols-[56px_1fr] items-center min-h-20">
                         <a
@@ -28,7 +28,7 @@ function Services () {
                 ))}
             </div>
 
-            <div class="flex flex-col">
+            <div class="flex flex-col px-5">
                 <img src={serviceImg} class="w-full mx-auto mt-auto" />
             </div>
 

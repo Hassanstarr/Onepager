@@ -2,12 +2,12 @@ import { FaFacebookF, FaTwitter, FaRss, FaGooglePlusG } from "react-icons/fa";
 
 function teamCard({image, name, role}) {
     return(
-        <div className="w-[262.5px]">
+        <div className="w-full">
         
             <img
                 src={image}
                 alt="Team member"
-                className="block h-[225.862px] w-[262.5px] object-cover"
+                className="block  w-full object-cover"
             />
 
             

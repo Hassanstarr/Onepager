@@ -2,7 +2,7 @@ function SearchPortfolio({ onCategoryChange }) {
     const categories = ["All", "Web Design", "Photography", "Illustration", "Branding"];
 
     return (
-        <div className="flex flex-wrap items-center justify-center gap-3 p-5">
+        <div className="flex flex-wrap items-center justify-center gap-3 p-5 md:p-2">
             {categories.map((category) => (
                 <button
                     key={category}

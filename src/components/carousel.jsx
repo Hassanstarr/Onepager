@@ -27,17 +27,17 @@ function Carousel() {
         style={{ backgroundImage: `url(${currentSlide.image})` }}
         className="w-full h-full bg-center bg-cover duration-500 relative overflow-hidden"
       >
-        <div className="absolute inset-0 bg-linear-to-b from-black/30 via-black/50 to-black/70" />
+        <div className="absolute inset-0" />
 
         {/* Centered Text Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 z-10 select-none">
           
           
-          <h2 className="text-3xl md:text-4xl font-bold tracking-wide drop-shadow-md mb-2">
+          <h2 className="text-[45px] md:text-[36px] font-bold tracking-wide drop-shadow-md mb-2">
             {currentSlide.title1}
           </h2>
           
-          <p className="text-sm md:text-base max-w-md text-gray-200 drop-shadow-sm">
+          <p className="test-[18px] md-[36px] md:text-base max-w-md text-gray-200 drop-shadow-sm">
             {currentSlide.title2}
           </p>
           

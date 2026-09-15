@@ -6,9 +6,9 @@ function About() {
     const [currentPage, setCurrentPage] = useState(0);
     
     return(
-        <div id="About" className="mx-47">
+        <div id="About" className="mx-5 md:mx-15 lg:mx-47">
 
-            <div className="grid grid-cols-2 gap-10 pt-35">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 pt-35">
                 
                 <div className="grid grid-rows-[auto-1fr]">
                     <div className="mb-10">
@@ -85,7 +85,7 @@ function About() {
 
             </div>
 
-            <div className="w-full mx-10 mt-10">
+            <div className="w-full md:mx-10 mt-10">
                 <div className="my-10 text-center">
                     <h1 className="mx-2.5 font-['Courier_New'] text-[45px] font-bold uppercase">
                     Company stats
@@ -96,15 +96,15 @@ function About() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
                     
                     {aboutData.map((stats) => (
-                        <div className="flex flex-col items-center justify-center px-2.5 py-12.5 text-center border border-[#e4e4e4]">
+                        <div className="flex flex-col items-center justify-center px-1 md:px-2.5 py-12.5 text-center border border-[#e4e4e4]">
                             <div className="mb-5 text-4xl text-[#2bb6b6]">
                                 {stats.icon}
                             </div>
 
-                            <span className="mb-3 inline-block font-['Courier_New'] text-[56px] leading-9 text-[#060606]">
+                            <span className="mb-3 inline-block font-['Courier_New'] text-[36px] leading-9 text-[#060606]">
                                 {stats.number}
                             </span>
 

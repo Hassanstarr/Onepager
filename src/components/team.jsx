@@ -3,8 +3,10 @@ import TeamCard from "./teamCard.jsx";
 import teamData from "../data/team.js";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Grid } from "swiper/modules";
 
 import "swiper/css";
+import "swiper/css/grid";
 
 function Team() {
   const [swiper, setSwiper] = useState(null);
@@ -18,13 +20,32 @@ function Team() {
             This is Photoshop's version of Lorem Ipsum. Proin gravida
         </p>
 
-        <div className="w-full px-35">
+        <div className="w-full px-5 md:px-20 lg:px-30">
             <Swiper
+            modules={[Grid]}
             slidesPerView={4}
             slidesPerGroup={4}
             spaceBetween={12}
             speed={700}
             onSwiper={setSwiper}
+            breakpoints={{
+                0: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                    grid: {
+                        rows: 4,
+                        fill: "row",
+                    },
+                },
+
+                1024: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 1,
+                    grid: {
+                        rows: 1,
+                    },
+                },
+            }}
             >
             {teamData.map((team) => (
                 <SwiperSlide key={team.name}>
