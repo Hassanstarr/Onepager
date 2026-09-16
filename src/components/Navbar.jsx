@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState, useEffect, useRef } from 'react'
+import { FaUserCircle } from "react-icons/fa"
 import logo from "../assets/logo.png"
 
-function Navbar() {
+function Navbar({ token, setAuthModalOpen }) {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false); 
     const menuRef = useRef(null); 
     const buttonRef = useRef(null); 
@@ -54,6 +55,15 @@ function Navbar() {
                             <li><a href="#About" className="relative px-1 lg:px-4 py-3 font-['Courier_New'] text-[17px] md:text-[13px] lg:text-[18px] uppercase text-[#010000] transition-all duration-170 ease-in-out hover:bg-[#2bb6b6] hover:text-white">About</a></li> 
                             <li><a href="#Blog" className="relative px-1 lg:px-4 py-3 font-['Courier_New'] text-[17px] md:text-[13px] lg:text-[18px] uppercase text-[#010000] transition-all duration-170 ease-in-out hover:bg-[#2bb6b6] hover:text-white">Blog</a></li> 
                             <li><a href="#Contact" className="relative px-1 lg:px-4 py-3 font-['Courier_New'] text-[17px] md:text-[13px] lg:text-[18px] uppercase text-[#010000] transition-all duration-170 ease-in-out hover:bg-[#2bb6b6] hover:text-white text-nowrap">Contact Us</a></li>
+                            <li>
+                                <button 
+                                    onClick={() => setAuthModalOpen(true)}
+                                    className="relative px-1 lg:px-4 py-3 flex items-center justify-center transition-all duration-170 ease-in-out cursor-pointer"
+                                    title={token ? "Account" : "Login"}
+                                >
+                                    <FaUserCircle size={24} color={token ? "#2bb6b6" : "#ef4444"} />
+                                </button>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -104,6 +114,19 @@ function Navbar() {
                                 <a href="#Contact" className="block px-4 py-3 hover:bg-[#2bb6b6] hover:text-white">
                                     Contact Us
                                 </a>
+                            </li>
+                            
+                            <li>
+                                <button 
+                                    onClick={() => {
+                                        setAuthModalOpen(true);
+                                        setMobileMenuOpen(false);
+                                    }}
+                                    className="w-full text-left flex items-center gap-2 px-4 py-3 hover:bg-[#2bb6b6] hover:text-white cursor-pointer"
+                                >
+                                    <FaUserCircle size={20} color={token ? "#2bb6b6" : "#ef4444"} />
+                                    <span>{token ? "Account" : "Login"}</span>
+                                </button>
                             </li>
                         </ul>
                     </div>
