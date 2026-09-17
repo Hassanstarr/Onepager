@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Auth({ token, setToken, setAuthModalOpen }) {
 
@@ -11,11 +12,16 @@ function Auth({ token, setToken, setAuthModalOpen }) {
         userName: "",
         email: "",
         password: "",
+        comfirmPassword: "",
         newPassword: ""
     });
 
     const [status, setStatus] = useState(null);
     const [message, setMessage] = useState("");
+
+    const [showPassword, setShowPassword] = useState(false);
+    const [showNewPassword, setShowNewPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     useEffect(() => {
 
@@ -56,8 +62,8 @@ function Auth({ token, setToken, setAuthModalOpen }) {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    userName: formData.userName,
-                    password: formData.password
+                    userName: formData.userName.trimEnd(),
+                    password: formData.password.trimEnd()
                 })
             });
 
@@ -102,10 +108,11 @@ function Auth({ token, setToken, setAuthModalOpen }) {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    name: formData.name,
-                    userName: formData.userName,
-                    email: formData.email,
-                    password: formData.password
+                    name: formData.name.trimEnd(),
+                    userName: formData.userName.trimEnd(),
+                    email: formData.email.trim().toLowerCase(),
+                    password: formData.password,
+                    comfirmPassword: formData.comfirmPassword
                 })
             });
 
@@ -113,6 +120,7 @@ function Auth({ token, setToken, setAuthModalOpen }) {
 
             if (response.ok) {
 
+                changeForm("login");
                 setStatus("success");
                 setMessage(data.message || "Registration successful");
 
@@ -149,8 +157,8 @@ function Auth({ token, setToken, setAuthModalOpen }) {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        userName: formData.userName,
-                        email: formData.email
+                        userName: formData.userName.trimEnd(),
+                        email: formData.email.trimEnd()
                     })
                 }
             );
@@ -159,7 +167,6 @@ function Auth({ token, setToken, setAuthModalOpen }) {
 
             if (response.ok) {
 
-                setActiveForm("reset");
                 setStatus(null);
 
                 setMessage(
@@ -187,20 +194,22 @@ function Auth({ token, setToken, setAuthModalOpen }) {
         setStatus("loading");
 
         try {
-            const apiUrl =
-                import.meta.env.VITE_API_URL || "http://localhost:5000";
+            const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
+            const token = localStorage.getItem("token");
 
             const response = await fetch(
                 `${apiUrl}/api/user/reset-password`,
                 {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
                     },
                     body: JSON.stringify({
-                        userName: formData.userName,
-                        email: formData.email,
-                        newPassword: formData.newPassword
+                        password: formData.password.trimEnd(),
+                        newPassword: formData.newPassword,
+                        comfirmPassword: formData.comfirmPassword
                     })
                 }
             );
@@ -208,8 +217,9 @@ function Auth({ token, setToken, setAuthModalOpen }) {
             const data = await response.json();
 
             if (response.ok) {
-
+                
                 setStatus("success");
+                changeForm("account")
                 setMessage(data.message || "Password reset successfully");
 
             } else {
@@ -265,8 +275,12 @@ function Auth({ token, setToken, setAuthModalOpen }) {
             userName: "",
             email: "",
             password: "",
+            comfirmPassword: "",
             newPassword: ""
         });
+        setShowPassword(false);
+        setShowNewPassword(false);
+        setShowConfirmPassword(false);
         setStatus(null);
         setMessage("");
     };
@@ -340,28 +354,29 @@ function Auth({ token, setToken, setAuthModalOpen }) {
                                             onChange={handleChange}
                                             required
                                             placeholder="Full Name"
-                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484]"
+                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 pr-14 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484]"
                                         />
                                     </div>
                                 )}
 
 
-                                <div className="mb-2.5 flex">
-                                    <input
-                                        type="text"
-                                        name="userName"
-                                        value={formData.userName}
-                                        onChange={handleChange}
-                                        required
-                                        placeholder="Username"
-                                        className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484]"
-                                    />
-                                </div>
+                                {activeForm !== "reset" &&(
+                                    <div className="mb-2.5 flex">
+                                        <input
+                                            type="text"
+                                            name="userName"
+                                            value={formData.userName}
+                                            onChange={handleChange}
+                                            required
+                                            placeholder="Username"
+                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 pr-14 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484]"
+                                        />
+                                    </div>
+                                )}
 
 
                                 {(activeForm === "register" ||
-                                    activeForm === "forgot" ||
-                                    activeForm === "reset") && (
+                                    activeForm === "forgot") && (
 
                                     <div className="mb-2.5 flex">
                                         <input
@@ -371,39 +386,77 @@ function Auth({ token, setToken, setAuthModalOpen }) {
                                             onChange={handleChange}
                                             required
                                             placeholder="Email Address"
-                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484]"
+                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 pr-14 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484]"
                                         />
                                     </div>
                                 )}
 
 
                                 {(activeForm === "register" ||
-                                    activeForm === "login") && (
+                                    activeForm === "login" ||
+                                    activeForm === "reset") && (
 
-                                    <div className="mb-2.5 flex">
+                                    <div className="relative mb-2.5">
                                         <input
-                                            type="password"
+                                            type={showPassword ? "text" : "password"}
                                             name="password"
                                             value={formData.password}
                                             onChange={handleChange}
                                             required
                                             placeholder="Password"
-                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484]"
+                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 pr-14 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484]"
                                         />
+                                        <button
+                                            type="button"
+                                            onClick={() => setShowPassword(!showPassword)}
+                                            className="absolute right-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer text-xl text-[#848484]"
+                                        >
+                                            {showPassword ? <FaEye className="text-[#2bb6b6]" /> : <FaEyeSlash /> }
+                                        </button>
                                     </div>
                                 )}
 
                                 {activeForm === "reset" && (
-                                    <div className="mb-2.5 flex">
+                                    <div className="relative mb-2.5">
                                         <input
-                                            type="password"
+                                            type={showNewPassword ? "text" : "password"}
                                             name="newPassword"
                                             value={formData.newPassword}
                                             onChange={handleChange}
                                             required
                                             placeholder="New Password"
-                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484]"
+                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 pr-14 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484]"
                                         />
+                                        <button
+                                            type="button"
+                                            onClick={() => setShowNewPassword(!showNewPassword)}
+                                            className="absolute right-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer text-xl text-[#848484]"
+                                        >
+                                            {showNewPassword ? <FaEye className="text-[#2bb6b6]" /> : <FaEyeSlash />  }
+                                        </button>
+                                    </div>
+                                )}
+
+                                {(activeForm === "register" ||
+                                    activeForm === "reset") && (
+
+                                    <div className="relative mb-2.5">
+                                        <input
+                                            type={showConfirmPassword ? "text" : "password"}
+                                            name="comfirmPassword"
+                                            value={formData.comfirmPassword}
+                                            onChange={handleChange}
+                                            required
+                                            placeholder="Comfirm Password"
+                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 pr-14 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484]"
+                                        />
+                                        <button
+                                            type="button"
+                                            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                            className="absolute right-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer text-xl text-[#848484]"
+                                        >
+                                            {showConfirmPassword ? <FaEye className="text-[#2bb6b6]" /> : <FaEyeSlash /> }
+                                        </button>
                                     </div>
                                 )}
 

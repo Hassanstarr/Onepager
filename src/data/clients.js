@@ -5,9 +5,9 @@ import client4 from "../assets/client4.png";
 
 const clients = [
     [client1, client2, client3, client4],
-    [client1, client2, client3, client4],
-    [client1, client2, client3, client4],
-    [client1, client2, client3, client4],
+    [client2, client3, client4, client1],
+    [client3, client4, client1, client2],
+    [client4, client1, client2, client3],
 ];
 
 export default clients;

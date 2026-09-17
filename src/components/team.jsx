@@ -40,7 +40,7 @@ function Team() {
 
                 1024: {
                     slidesPerView: 4,
-                    slidesPerGroup: 1,
+                    slidesPerGroup: 4,
                     grid: {
                         rows: 1,
                     },
