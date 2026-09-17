@@ -9,7 +9,7 @@ function Services () {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-10 py-20 px-5 md:px-10 lg:px-50">
                 {servicesData.map((service) => (
-                    <div className="grid grid-cols-[56px_1fr] items-center min-h-20">
+                    <div key={service.title} className="grid grid-cols-[56px_1fr] items-center min-h-20">
                         <a
                             href="#"
                             className="relative ml-3.75 flex h-20 w-14 items-center justify-center text-center text-white bg-[#2bb6b6] transition-colors"
