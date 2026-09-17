@@ -48,7 +48,7 @@ function Team() {
             }}
             >
             {teamData.map((team) => (
-                <SwiperSlide key={team.name}>
+                <SwiperSlide key={team.id}>
                 <TeamCard
                     image={team.image}
                     name={team.name}

@@ -13,7 +13,8 @@ function Auth({ token, setToken, setAuthModalOpen }) {
         email: "",
         password: "",
         comfirmPassword: "",
-        newPassword: ""
+        newPassword: "",
+        otp: "",
     });
 
     const [status, setStatus] = useState(null);
@@ -167,10 +168,10 @@ function Auth({ token, setToken, setAuthModalOpen }) {
 
             if (response.ok) {
 
+                setActiveForm("otp");
                 setStatus(null);
-
                 setMessage(
-                    "Username and email verified. Please enter your new password."
+                    data.message
                 );
 
             } else {
@@ -188,6 +189,110 @@ function Auth({ token, setToken, setAuthModalOpen }) {
         }
     };
 
+    const handleVerifyOTP = async (e) => {
+        e.preventDefault();
+        setStatus("loading");
+
+        try {
+
+            const apiUrl =
+                import.meta.env.VITE_API_URL || "http://localhost:5000";
+
+            const response = await fetch(
+                `${apiUrl}/api/user/otp`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        userName: formData.userName.trimEnd(),
+                        email: formData.email.trim().toLowerCase(),
+                        otp: formData.otp.trim()
+                    })
+                }
+            );
+
+            const data = await response.json();
+
+            if (response.ok) {
+
+                setActiveForm("reset");
+
+                setStatus(null);
+                setMessage(
+                    data.message || "OTP verified successfully"
+                );
+
+            } else {
+
+                setStatus("error");
+                setMessage(
+                    data.message || "Invalid OTP"
+                );
+
+            }
+
+        } catch (error) {
+
+            setStatus("error");
+            setMessage("Network error");
+
+        }
+    };
+
+    const handleResetPasswordOTP = async (e) => {
+        e.preventDefault();
+        setStatus("loading");
+
+        try {
+
+            const apiUrl =
+                import.meta.env.VITE_API_URL || "http://localhost:5000";
+
+            const response = await fetch(
+                `${apiUrl}/api/user/reset-password-otp`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        userName: formData.userName.trimEnd(),
+                        email: formData.email.trim().toLowerCase(),
+                        newPassword: formData.newPassword,
+                        comfirmPassword: formData.comfirmPassword
+                    })
+                }
+            );
+
+            const data = await response.json();
+
+            if (response.ok) {
+
+                setStatus("success");
+                setMessage(
+                    data.message || "Password reset successfully"
+                );
+
+                changeForm("login");
+
+            } else {
+
+                setStatus("error");
+                setMessage(
+                    data.message || "Error occurred"
+                );
+
+            }
+
+        } catch (error) {
+
+            setStatus("error");
+            setMessage("Network error");
+
+        }
+    };
 
     const handleResetPassword = async (e) => {
         e.preventDefault();
@@ -261,8 +366,16 @@ function Auth({ token, setToken, setAuthModalOpen }) {
             handleForgotPassword(e);
         }
 
+        else if (activeForm === "otp") {
+            handleVerifyOTP(e);
+        }
+
         else if (activeForm === "reset") {
-            handleResetPassword(e);
+            if (token) {
+                handleResetPassword(e);
+            } else {
+                handleResetPasswordOTP(e);
+            }
         }
     };
 
@@ -270,14 +383,21 @@ function Auth({ token, setToken, setAuthModalOpen }) {
     const changeForm = (form) => {
 
         setActiveForm(form);
-        setFormData({
-            name: "",
-            userName: "",
-            email: "",
-            password: "",
-            comfirmPassword: "",
-            newPassword: ""
-        });
+        
+        if (form === "login" || form === "register") {
+
+            setFormData({
+                name: "",
+                userName: "",
+                email: "",
+                password: "",
+                comfirmPassword: "",
+                newPassword: "",
+                otp: ""
+            });
+
+        }
+
         setShowPassword(false);
         setShowNewPassword(false);
         setShowConfirmPassword(false);
@@ -354,13 +474,15 @@ function Auth({ token, setToken, setAuthModalOpen }) {
                                             onChange={handleChange}
                                             required
                                             placeholder="Full Name"
-                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 pr-14 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484]"
+                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 pr-14 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484] focus:text-[#2bb6b6] focus:border-[#2bb6b6]"
                                         />
                                     </div>
                                 )}
 
 
-                                {activeForm !== "reset" &&(
+                                {(activeForm === "login" ||
+                                    activeForm === "register" ||
+                                    activeForm === "forgot") &&(
                                     <div className="mb-2.5 flex">
                                         <input
                                             type="text"
@@ -369,7 +491,7 @@ function Auth({ token, setToken, setAuthModalOpen }) {
                                             onChange={handleChange}
                                             required
                                             placeholder="Username"
-                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 pr-14 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484]"
+                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 pr-14 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484] focus:text-[#2bb6b6] focus:border-[#2bb6b6]"
                                         />
                                     </div>
                                 )}
@@ -386,15 +508,36 @@ function Auth({ token, setToken, setAuthModalOpen }) {
                                             onChange={handleChange}
                                             required
                                             placeholder="Email Address"
-                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 pr-14 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484]"
+                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 pr-14 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484] focus:text-[#2bb6b6] focus:border-[#2bb6b6]"
                                         />
                                     </div>
+                                )}
+
+                                {activeForm === "otp" && (
+
+                                    <div className="mb-2.5 flex">
+
+                                        <input
+                                            type="text"
+                                            name="otp"
+                                            value={formData.otp}
+                                            onChange={handleChange}
+                                            required
+                                            maxLength={6}
+                                            inputMode="numeric"
+                                            pattern="[0-9]{6}"
+                                            placeholder="Enter 6-Digit OTP"
+                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 text-center font-['Courier_New'] text-[20px] tracking-[8px] text-[#848484] outline-none placeholder:text-[#848484] placeholder:tracking-normal"
+                                        />
+
+                                    </div>
+
                                 )}
 
 
                                 {(activeForm === "register" ||
                                     activeForm === "login" ||
-                                    activeForm === "reset") && (
+                                    (activeForm === "reset" && token)) && (
 
                                     <div className="relative mb-2.5">
                                         <input
@@ -404,10 +547,11 @@ function Auth({ token, setToken, setAuthModalOpen }) {
                                             onChange={handleChange}
                                             required
                                             placeholder="Password"
-                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 pr-14 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484]"
+                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 pr-14 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484] focus:text-[#2bb6b6] focus:border-[#2bb6b6]"
                                         />
                                         <button
                                             type="button"
+                                            tabIndex={-1}
                                             onClick={() => setShowPassword(!showPassword)}
                                             className="absolute right-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer text-xl text-[#848484]"
                                         >
@@ -425,10 +569,11 @@ function Auth({ token, setToken, setAuthModalOpen }) {
                                             onChange={handleChange}
                                             required
                                             placeholder="New Password"
-                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 pr-14 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484]"
+                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 pr-14 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484] focus:text-[#2bb6b6] focus:border-[#2bb6b6]"
                                         />
                                         <button
                                             type="button"
+                                            tabIndex={-1}
                                             onClick={() => setShowNewPassword(!showNewPassword)}
                                             className="absolute right-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer text-xl text-[#848484]"
                                         >
@@ -448,10 +593,11 @@ function Auth({ token, setToken, setAuthModalOpen }) {
                                             onChange={handleChange}
                                             required
                                             placeholder="Comfirm Password"
-                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 pr-14 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484]"
+                                            className="block h-18 w-full rounded-none border border-[#eaeaea] bg-white p-4.5 pr-14 font-['Courier_New'] text-[14px] text-[#848484] outline-none placeholder:text-[#848484] focus:text-[#2bb6b6] focus:border-[#2bb6b6]"
                                         />
                                         <button
                                             type="button"
+                                            tabIndex={-1}
                                             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                                             className="absolute right-4 top-1/2 z-10 -translate-y-1/2 cursor-pointer text-xl text-[#848484]"
                                         >
@@ -467,8 +613,8 @@ function Auth({ token, setToken, setAuthModalOpen }) {
                                     className="mt-3 block h-18 w-full cursor-pointer border-none bg-[#2bb6b6] p-[4.75] text-center font-['Courier_New'] text-[14px] uppercase text-white transition-colors hover:bg-[#169c9a] disabled:opacity-50"
                                 >
                                     {status === "loading"
-                                        ? "Processing..."
-                                        : "Submit"}
+                                        ? "Processing..." : activeForm === "forgot" ? "Send OTP" : activeForm === "otp" ? "Verify OTP" : activeForm === "reset" ? "Reset Password" : "Submit"
+                                    }
                                 </button>
 
 
@@ -501,7 +647,9 @@ function Auth({ token, setToken, setAuthModalOpen }) {
 
                                     <>
 
-                                        {activeForm !== "login" && (
+                                        {activeForm !== "login" &&
+                                            activeForm !== "otp" &&
+                                            activeForm !== "reset" && (
                                             <button
                                                 onClick={() => changeForm("login")}
                                                 className="cursor-pointer font-['Courier_New'] text-[#2bb6b6] underline"
@@ -511,7 +659,9 @@ function Auth({ token, setToken, setAuthModalOpen }) {
                                         )}
 
 
-                                        {activeForm !== "register" && (
+                                        {activeForm !== "register" &&
+                                            activeForm !== "otp" &&
+                                            activeForm !== "reset" && (
                                             <button
                                                 onClick={() => changeForm("register")}
                                                 className="cursor-pointer font-['Courier_New'] text-[#2bb6b6] underline"
@@ -522,6 +672,7 @@ function Auth({ token, setToken, setAuthModalOpen }) {
 
 
                                         {activeForm !== "forgot" &&
+                                            activeForm !== "otp" &&
                                             activeForm !== "reset" && (
                                                 <button
                                                     onClick={() => changeForm("forgot")}
