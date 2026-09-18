@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect, useRef } from 'react'
 import { FaUserCircle } from "react-icons/fa"
+import { HiOutlineBars3 } from "react-icons/hi2";
 import logo from "../assets/logo.png"
 
 function Navbar({ token, setAuthModalOpen }) {
@@ -29,15 +30,15 @@ function Navbar({ token, setAuthModalOpen }) {
     
     return (
         <nav className="sticky top-0 z-50 bg-white/90 py-5 lg:p-5 shadow-md w-full">
-            <div className="container mx-auto pl-2">
+            <div className="container mx-auto">
                 <div className='flex justify-end'>
                     <button
                         ref={buttonRef}
                         type="button"
                         onClick={toggleMobileMenu}
-                        className="ml-auto text-2xl md:hidden"
+                        className="mt-5 mr-3 mb-2 border border-[#dddddd] text-[#555555] px-2 py-1 text-2xl md:hidden"
                     >
-                        &#9776;
+                        <HiOutlineBars3 />
                     </button>
 
 

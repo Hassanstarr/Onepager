@@ -20,7 +20,7 @@ function Team() {
             This is Photoshop's version of Lorem Ipsum. Proin gravida
         </p>
 
-        <div className="w-full px-5 md:px-20 lg:px-30">
+        <div className="w-full page-container">
             <Swiper
             modules={[Grid]}
             slidesPerView={4}

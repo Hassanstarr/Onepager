@@ -6,9 +6,9 @@ function About() {
     const [currentPage, setCurrentPage] = useState(0);
     
     return(
-        <div id="About" className="mx-5 md:mx-15 lg:mx-47">
+        <div id="About" >
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 pt-35">
+            <div className="w-full page-container grid grid-cols-1 lg:grid-cols-2 gap-10 mt-20">
                 
                 <div className="grid grid-rows-[auto-1fr]">
                     <div className="mb-10">
@@ -47,7 +47,7 @@ function About() {
 
                     
 
-                    <div className="relative mt-10">
+                    <div className="relative lg:-top-15">
 
                         <div className="absolute right-0 top-0 flex gap-2">
                             {clients.map((_, index) => (
@@ -67,7 +67,7 @@ function About() {
                             {clients[currentPage].map((client, index) => (
                                 <div
                                     key={index}
-                                    className="flex h-30 items-center justify-center border border-[#e4e4e4] bg-[#2bb6b6]"
+                                    className="flex h-37 items-center justify-center border border-[#e4e4e4] bg-[#2bb6b6]"
                                 >
                                     <img
                                         src={client}
@@ -85,7 +85,7 @@ function About() {
 
             </div>
 
-            <div className="w-full md:mx-10 mt-10">
+            <div className="w-full page-container mt-10">
                 <div className="my-10 text-center">
                     <h1 className="mx-2.5 font-['Courier_New'] text-[45px] font-bold uppercase">
                     Company stats

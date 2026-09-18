@@ -26,12 +26,12 @@ function Portfolio() {
     
     
     return (
-        <div id='Portfolio' className="w-full pt-5 sm:p-10 sm:pt-40 bg-gray-200 flex items-center justify-center flex-col">
-            <h1 className="text-[45px] text-center uppercase font-bold font-['Courier_New'] px-5">Our Portfolio</h1>
+        <div id='Portfolio' className="w-full pt-30 bg-gray-200 flex items-center justify-center flex-col">
+            <h1 className="text-[45px] text-center uppercase font-bold font-['Courier_New']">Our Portfolio</h1>
             <p className="text-[18px] text-center text-gray-600 font-['Courier_New']">This is Photoshop's version of Lorem Ipsum. Proin gravida</p>
 
-            <section className="w-full mt-10">
-                <div className="m-10 border-t-2 border-b-2 border-gray-300">
+            <section className="w-full page-container">
+                <div className="my-10 border-t-2 border-b-2 border-gray-300">
                     <SearchPortfolio onCategoryChange={setCategory} />
                 </div>
             
