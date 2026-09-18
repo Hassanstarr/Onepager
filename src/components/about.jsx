@@ -98,8 +98,8 @@ function About() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
                     
-                    {aboutData.map((stats) => (
-                        <div className="flex flex-col items-center justify-center px-1 md:px-2.5 py-12.5 text-center border border-[#e4e4e4]">
+                    {aboutData.map((stats, index) => (
+                        <div key={index} className="flex flex-col items-center justify-center px-1 md:px-2.5 py-12.5 text-center border border-[#e4e4e4]">
                             <div className="mb-5 text-4xl text-[#2bb6b6]">
                                 {stats.icon}
                             </div>
