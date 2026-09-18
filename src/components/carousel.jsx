@@ -33,7 +33,7 @@ function Carousel() {
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-22 z-10 select-none">
           
           
-          <h2 className="text-[36px] md:text-[45px] lg:text-[60px] font-['Courier_New'] font-bold drop-shadow-md mb-2 flex-wrap">
+          <h2 className="text-[36px] md:text-[45px] lg:text-[60px] max-h-auto font-['Courier_New'] font-bold drop-shadow-md flex-wrap">
             {currentSlide.title1}
           </h2>
           

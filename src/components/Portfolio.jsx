@@ -9,6 +9,12 @@ function Portfolio() {
     const [category, setCategory] = useState("All");
     const [zoomImage, setZoomImage] = useState("");
     const [aboutPortfolio, setAboutPortfolio] = useState("")
+    const [selectedCategory, setSelectedCategory] = useState("All");
+
+    const handleCategoryChange = (category) => {
+        setCategory(category);
+        setSelectedCategory(category);
+    };
 
     const filteredPortfolioData = category === "All"
         ? portfolioData
@@ -32,7 +38,7 @@ function Portfolio() {
 
             <section className="w-full page-container">
                 <div className="my-10 border-t-2 border-b-2 border-gray-300">
-                    <SearchPortfolio onCategoryChange={setCategory} />
+                    <SearchPortfolio onCategoryChange={handleCategoryChange} selectedCategory={selectedCategory} />
                 </div>
             
                 <div className="columns-1 gap-4 sm:columns-1 md:columns-2 lg:columns-4">
