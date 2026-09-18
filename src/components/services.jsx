@@ -5,18 +5,18 @@ function Services () {
     return (
         <div id='Services' className="w-full pt-40 flex items-center justify-center flex-col">
             <h1 className="text-[45px] text-center uppercase font-bold font-['Courier_New']">Our Services</h1>
-            <p className="text-[18px] text-center text-gray-600 font-['Courier_New']">This is Photoshop's version of Lorem Ipsum. Proin gravida</p>
+            <p className="text-[18px] text-center text-gray-600 font-['Courier_New'] mb-10">This is Photoshop's version of Lorem Ipsum. Proin gravida</p>
 
-            <div className="page-container grid grid-cols-1 lg:grid-cols-3 gap-y-5 my-10">
+            <div className="page-container grid grid-cols-1 lg:grid-cols-3 gap-y-5">
                 {servicesData.map((service) => (
                     <div key={service.title} className="grid grid-cols-[56px_1fr] items-center min-h-20">
                         <a
                             href="#"
-                            className="relative ml-3.75 flex h-20 w-14 items-center justify-center text-center text-white bg-[#2bb6b6] transition-colors"
+                            className="relative flex h-20 w-14 items-center justify-center text-center text-white bg-[#2bb6b6] transition-colors"
                         >
                             {service.icon}
                         </a>
-                        <div className="flex flex-col justify-center pl-5 text-center">
+                        <div className="flex flex-col justify-center px-5 text-center">
                             <div className="mb-1 font-['Courier_New'] text-[20px] font-normal uppercase text-[#181818]">
                                 {service.title}
                             </div>
@@ -28,7 +28,7 @@ function Services () {
                 ))}
             </div>
 
-            <div class="flex flex-col px-5 pt-5">
+            <div class="flex flex-col px-5 pt-10">
                 <img src={serviceImg} class="w-full mx-auto mt-auto" />
             </div>
 

@@ -29,8 +29,8 @@ function Navbar({ token, setAuthModalOpen }) {
     }, []);
     
     return (
-        <nav className="sticky top-0 z-50 bg-white/90 py-5 lg:p-5 shadow-md w-full">
-            <div className="container mx-auto">
+        <nav className="sticky top-0 z-50 w-full bg-white/90 py-5 shadow-md lg:p-5">
+            <div className="w-full px-4 lg:px-5">
                 <div className='flex justify-end'>
                     <button
                         ref={buttonRef}
@@ -43,11 +43,11 @@ function Navbar({ token, setAuthModalOpen }) {
 
 
                 </div>
-                <div className="flex items-center">
+                <div className="flex w-full items-center justify-between">
                     <div className="mr-6">
                         <img src={logo} alt="OnePager" />
                     </div>
-                    <div className="ml-auto hidden md:block">
+                    <div className="hidden md:block">
                         <ul className="flex items-center gap-2">
                             <li><a href="#Home" className="relative px-1 lg:px-4 py-3 font-['Courier_New'] text-[17px] md:text-[13px] lg:text-[18px] uppercase text-[#010000] transition-all duration-170 ease-in-out hover:bg-[#2bb6b6] hover:text-white">Home</a></li>
                             <li><a href="#Portfolio" className="relative px-1 lg:px-4 py-3 font-['Courier_New'] text-[17px] md:text-[13px] lg:text-[18px] uppercase text-[#010000] transition-all duration-170 ease-in-out hover:bg-[#2bb6b6] hover:text-white">Portfolio</a></li>

@@ -13,10 +13,10 @@ function Team() {
 
   return (
     <div id="Team" className="relative flex w-full flex-col items-center justify-center bg-[#333333] py-30">
-        <h1 className="font-['Courier_New'] text-[45px] font-bold uppercase text-white">
+        <h1 className="font-['Courier_New'] text-center text-[45px] font-bold uppercase text-white">
             Meet the Team
         </h1>
-        <p className="mb-5 font-['Courier_New'] text-[18px] text-white">
+        <p className="mb-10 font-['Courier_New'] text-center text-[18px] text-white">
             This is Photoshop's version of Lorem Ipsum. Proin gravida
         </p>
 

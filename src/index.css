@@ -1,11 +1,16 @@
 @import "tailwindcss";
 
 .page-container {
-  padding: 20px 148.2px; 
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 20px 15px;
+    box-sizing: border-box;
 }
 
 @media screen and (max-width: 768px) {
-    .page-container{
-        padding: 0 15px
+    .page-container {
+        max-width: 100%;
+        padding: 0 15px;
     }
 }

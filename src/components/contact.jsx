@@ -41,13 +41,13 @@ function Contact() {
     };
 
     return(
-        <div id='Contact' className="w-full page-container py-15 flex items-center justify-center flex-col bg-[#333333]">
+        <div id='Contact' className="w-full py-15 flex items-center justify-center flex-col bg-[#333333]">
             <div className="pt-25 text-center">
                 <h1 className="text-[45px] uppercase text-white font-bold font-['Courier_New']">Get in touch!</h1>
                 <p className="mb-5 text-[18px] text-white font-['Courier_New']">This is Photoshop's version of Lorem Ipsum. Proin gravida</p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 w-full max-w-6xl mb-20">
+            <div className="page-container grid grid-cols-1 lg:grid-cols-2 gap-10 w-full max-w-6xl mb-20">
                 
                 <div className="grid grid-rows-[auto-1fr]">
                     <div className="mb-3.5 pb-1 border-b border-[#4f4e4e]">
